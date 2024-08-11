@@ -19,6 +19,9 @@ mongoose.connect(mongoURI)
     .catch((error) => console.log(error))
 
 // Define routes
+app.get('/home',(req,res)=>{
+    res.send("hello world")
+})
 app.use('/api/users', require('./routes/users'));
 
 // Start server
