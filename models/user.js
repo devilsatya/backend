@@ -1,29 +1,11 @@
-
 const mongoose = require('mongoose');
 
-const USER = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    mobile:{
-        type:String,
-        required:true,
-       unique:true
-    },
-    password: {
-        type: String,
-        required: true
-    }
-    
+const UserSchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  mobile: { type: String },
+  enrolledCourses: [{ type: String }] // Array of course titles
 });
 
-const User = mongoose.model('Miraclesuser',USER);
-
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);

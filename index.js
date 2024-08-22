@@ -3,10 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const dotenv=require('dotenv');
-const middleware=require("./middleware")
-dotenv.config()
+const dotenv = require('dotenv');
 const app = express();
+dotenv.config();
 
 // Middleware
 app.use(bodyParser.json());
@@ -16,13 +15,11 @@ app.use(cors());
 const mongoURI = process.env.MONGODB_URI;
 mongoose.connect(mongoURI)
     .then(() => console.log("MongoDB connected successfully!"))
-    .catch((error) => console.log(error))
+    .catch((error) => console.log(error));
 
 // Define routes
-app.get('/home',(req,res)=>{
-    res.send("hello world")
-})
 app.use('/api/users', require('./routes/users'));
+app.use('/api/courses', require('./routes/course')); // Ensure this path is correct
 
 // Start server
 const PORT = process.env.PORT || 5000;
