@@ -63,7 +63,7 @@ router.post('/login', async (req, res) => {
 router.get('/myprofile', middleware, async (req, res) => {
     try {
       let userprofile = await User.findById(req.user.id);
-      console.log("Fetched user profile:", userprofile);  // Debug: Log the user profile data
+       // Debug: Log the user profile data
       return res.json(userprofile);
     } catch (err) {
       console.error(err.message);
